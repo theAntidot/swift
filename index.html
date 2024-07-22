@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swift Net</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <style>
+    body {
+      background-color: #1c384e;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: #ffffff;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .card {
+      background-color: #1c384e;
+      border: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-body {
+      background-color: #1c384e;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .circle {
+      width: 150px;
+      height: 150px;
+      background: white;
+      border-radius: 50%;
+      margin: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 24px;
+      color: black;
+    }
+
+    .circle.green {
+      border: 3px solid #f58634;
+    }
+
+    .circle.red {
+      border: 3px solid red;
+    }
+
+    @media (max-width: 576px) {
+      .circle {
+        width: 100px;
+        height: 100px;
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .circle {
+        width: 120px;
+        height: 120px;
+        font-size: 20px;
+      }
+    }
+
+    .modal.fade .modal-dialog {
+      transform: translate(0, -50px);
+      transition: transform 0.3s ease-out;
+      opacity: 0;
+    }
+
+    .modal.fade.show .modal-dialog {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+
+    @media (max-width: 767px) {
+      .card {
+        background-color: #1c384e;
+        margin-bottom: 20px;
+      }
+    }
+
+    .modal-body {
+      font-size: 20px;
+      text-align: center;
+      color: black;
+    }
+
+    .smaller-input {
+      width: 200px;
+      height: 40px;
+      font-size: 16px;
+      outline: 1px solid blue;
+    }
+
+    .larger-button {
+      width: 200px;
+      height: 40px;
+      font-size: 16px;
+    }
+
+    .wifi-heading {
+      font-family: 'Arial', sans-serif;
+      font-size: 25px;
+      font-weight: none;
+      color: #fff;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 16px;
+      color: white;
+    }
+
+    .logo img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .info {
+      color: red;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #ffffff;
+      padding: 20px 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    .footer-content img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 30px;
+      background-color: red;
+    }
+
+    @media screen and (min-width: 768px) {
+      .footer-content {
+        flex-direction: row;
+      }
+
+      .footer-content p {
+        margin-left: 20px;
+      }
+    }
+
+    .img-fluid {
+      max-width: 80%;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .logo-img {
+        max-width: 50%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo-img {
+        max-width: 30%;
+      }
+    }
+
+    .larger-butt {
+      width: 140px;
+      height: 80px;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px;
+      border-radius: 20px;
+      background-color: #f58634;
+      color: #010066;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="logo">
+            <h1>SWIFT NET WIFI</h1>
+            <h3>Tel: 0719856567</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5 class="text-center mt-5">Click to Make Payments</h5>
+
+<div class="text-center">
+  <button class="btn larger-butt" id="circle1" data-toggle="modal" data-target="#myModal" onclick="openModal('1 hr', 'KSH.10/=')">1 hr<br>KSH.10/=</button>
+  <button class="btn larger-butt" id="circle2" data-toggle="modal" data-target="#myModal" onclick="openModal('4 hrs', 'KSH.15/=')">4 hrs<br>KSH.15/=</button>
+  <button class="btn larger-butt" id="circle3" data-toggle="modal" data-target="#myModal" onclick="openModal('12 hrs', 'KSH.20/=')">12 hrs<br>KSH.20/=</button>
+  <button class="btn larger-butt" id="circle4" data-toggle="modal" data-target="#myModal" onclick="openModal('24 hrs', 'KSH.30/=')">24 hrs<br>KSH.30/=</button>
+  <button class="btn larger-butt" id="circle5" data-toggle="modal" data-target="#myModal" onclick="openModal('3 days', 'KSH.100/=')">3 days<br>KSH.100/=</button>
+</div>
+
+<form name="sendin_" action="http://swift.net/login" method="post" style="display:none">
+  <input type="hidden" name="username" />
+  <input type="hidden" name="password" />
+  <input type="hidden" name="dst" value="http://www.msftconnecttest.com/redirect" />
+  <input type="hidden" name="popup" value="true" />
+</form>
+
+<script src="/md5.js"></script>
+<script>
+  function voucher() {
+    document.sendin_.username.value = document.login.username.value;
+    document.sendin_.password.value = hexMD5('\017' + document.login.password.value + '\202\345\374\374\110\067\324\067\267\141\254\350\073\335\210\330');
+    document.sendin_.submit();
+    return false;
+  }
+</script>
+
+<div class="row mt-5">
+  <div class="col-lg-6 mx-auto">
+    <div class="card">
+      <div class="card-body text-center">
+        <h3 class="text-center">Enter Voucher</h3>
+        <form name="login" action="http://swift.net/login" method="post" onSubmit="return voucher()">
+          <input type="hidden" name="dst" value="http://www.msftconnecttest.com/redirect" />
+          <input type="hidden" name="popup" value="true" />
+          <p class="info" id="errorParagraph">Please log in to use the internet hotspot service</p>
+          <div class="form-group">
+            <input type="text" name="username" class="form-control" id="voucherInput" placeholder="Enter Voucher">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Enter Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Payment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3 id="modalTitle"></h3>
+        <p id="modalPrice"></p>
+        <form id="paymentForm">
+          <div class="form-group">
+            <label for="phoneNumber">Enter Phone Number:</label>
+            <input type="tel" class="form-control" id="phoneNumber" placeholder="07XXXXXXXX" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Make Payment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function openModal(time, price) {
+    $('#modalTitle').text(time);
+    $('#modalPrice').text(price);
+  }
+
+  $(document).ready(function() {
+    var phoneNumberInput = $('#phoneNumber');
+
+    $('#paymentForm').on('submit', function(event) {
+      event.preventDefault();
+      var phoneNumber = phoneNumberInput.val();
+      if (/^07\d{8}$/.test(phoneNumber)) {
+        var ws = new WebSocket('ws://example.com/websocket');
+        ws.onopen = function() {
+          ws.send(JSON.stringify({ phoneNumber: phoneNumber }));
+        };
+        ws.onmessage = function(event) {
+          var response = JSON.parse(event.data);
+          Swal.fire('Payment Successful', 'Thank you for your payment!', 'success');
+          ws.close();
+        };
+        ws.onerror = function() {
+          Swal.fire('Error', 'An error occurred during the payment process.', 'error');
+        };
+      } else {
+        Swal.fire('Invalid Phone Number', 'Please enter a valid phone number starting with 07.', 'error');
+      }
+    });
+  });
+</script>
+</body>
+</html>
